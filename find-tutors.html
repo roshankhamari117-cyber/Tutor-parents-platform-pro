@@ -14,7 +14,8 @@
 <a href="contact.html">Contact</a>
 </div>
 <h1>Find Tutors</h1>
-
+<input type="text" id="search" placeholder="Search subject (Math, English...)">
+<button onclick="searchTutor()">Search</button>
 <div class="tutor">
 <h2><a href="tutor-profile.html">Rahul Sharma</a></h2>
 <p>Subject: Mathematics</p>
@@ -58,3 +59,19 @@
 </body>
 
 </html>
+<script>
+function searchTutor() {
+  let input = document.getElementById("search").value.toLowerCase();
+  let tutors = document.querySelectorAll(".tutor");
+
+  tutors.forEach(function(tutor) {
+    let text = tutor.innerText.toLowerCase();
+
+    if(text.includes(input)){
+      tutor.style.display = "block";
+    } else {
+      tutor.style.display = "none";
+    }
+  });
+}
+</script>
