@@ -41,7 +41,10 @@ card.innerHTML = `
 <p>Subject: ${tutor.subject}</p>
 <p>Experience: ${tutor.experience}</p>
 <p>Location: ${tutor.location}</p>
-<button>Contact Tutor</button>
+<p>Phone: ${tutor.phone}</p>
+<a href="https://wa.me/${tutor.phone}" target="_blank">
+<button>Contact on WhatsApp</button>
+</a>
 `;
 
 tutorList.appendChild(card);
