@@ -1,37 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Become a Tutor</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="navbar">
+<a href="index.html">Home</a>
+<a href="find-tutors.html">Find Tutors</a>
+<a href="become-tutor.html">Become Tutor</a>
+<a href="contact.html">Contact</a>
+</div>
+
+<h1>Become a Tutor</h1>
+
+<p>Fill the form below to register as a tutor.</p>
+
 <form onsubmit="saveTutor(event)">
 
-<label>Name:</label><br>
-<input type="text" id="name"><br><br>
+<label>Name</label><br>
+<input type="text" id="name" placeholder="Enter your name" required><br><br>
 
-<label>Subject:</label><br>
-<input type="text" id="subject"><br><br>
+<label>Subject</label><br>
+<input type="text" id="subject" placeholder="Example: Math, English, Science" required><br><br>
 
-<label>Experience:</label><br>
-<input type="text" id="experience"><br><br>
+<label>Experience</label><br>
+<input type="text" id="experience" placeholder="Example: 2 years" required><br><br>
 
-<label>Location:</label><br>
-<input type="text" id="location"><br><br>
+<label>Location</label><br>
+<input type="text" id="location" placeholder="Example: Balangir" required><br><br>
 
-<button type="submit">Submit</button>
+<button type="submit">Register as Tutor</button>
 
 </form>
+
+<br>
+
+<p><b>Registration is currently FREE for early tutors.</b></p>
+
+<br>
+
+<a href="index.html">Go Back Home</a>
+
 <script>
+
 function saveTutor(event){
+
 event.preventDefault()
 
-let tutor={
-name:document.getElementById("name").value,
-subject:document.getElementById("subject").value,
-experience:document.getElementById("experience").value,
-location:document.getElementById("location").value
+let tutor = {
+name: document.getElementById("name").value,
+subject: document.getElementById("subject").value,
+experience: document.getElementById("experience").value,
+location: document.getElementById("location").value
 }
 
-let tutors=JSON.parse(localStorage.getItem("tutors")) || []
+let tutors = JSON.parse(localStorage.getItem("tutors")) || []
 
 tutors.push(tutor)
 
-localStorage.setItem("tutors",JSON.stringify(tutors))
+localStorage.setItem("tutors", JSON.stringify(tutors))
 
 alert("Tutor registered successfully!")
+
+document.querySelector("form").reset()
+
 }
+
 </script>
+
+</body>
+
+</html>
