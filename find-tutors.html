@@ -16,15 +16,33 @@
 <h1>Find Tutors</h1>
 <input type="text" id="search" placeholder="Search subject (Math, English...)">
 <button onclick="searchTutor()">Search</button>
-<div class="tutor">
-<h2><a href="tutor-profile.html">Rahul Sharma</a></h2>
-<p>Subject: Mathematics</p>
-<p>Experience: 5 years</p>
-<p>Location: Balangir</p>
+<d<div id="tutorList"></div>
 
+<script>
+
+let tutors = JSON.parse(localStorage.getItem("tutors")) || [];
+
+let tutorList = document.getElementById("tutorList");
+
+tutors.forEach(function(tutor){
+
+let card = document.createElement("div");
+
+card.className = "tutor";
+
+card.innerHTML = `
+<h2>${tutor.name}</h2>
+<p>Subject: ${tutor.subject}</p>
+<p>Experience: ${tutor.experience}</p>
+<p>Location: ${tutor.location}</p>
 <button>Contact Tutor</button>
+`;
 
-</div>
+tutorList.appendChild(card);
+
+});
+
+</script>iv class="tutor">
 
 <br>
 
