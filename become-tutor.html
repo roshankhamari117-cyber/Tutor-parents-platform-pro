@@ -1,27 +1,6 @@
-<!DOCTYPE html>
-<html>
-
-
-
-<head>
-<title>Become a Tutor</title>
-<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-<div class="navbar">
-<a href="index.html">Home</a>
-<a href="find-tutors.html">Find Tutors</a>
-<a href="become-tutor.html">Become Tutor</a>
-<a href="contact.html">Contact</a>
-</div>
-
-<h1>Become a Tutor</h1>
-
-<p>Fill the form below to register as a tutor.</p>
-
 <form onsubmit="saveTutor(event)">
-  <label>Name:</label><br>
+
+<label>Name:</label><br>
 <input type="text" id="name"><br><br>
 
 <label>Subject:</label><br>
@@ -32,50 +11,7 @@
 
 <label>Location:</label><br>
 <input type="text" id="location"><br><br>
-<label>Name:</label><br>
-<input type="text"><br><br>
-
-<label>Subject:</label><br>
-<input type="text"><br><br>
-
-<label>Experience:</label><br>
-<input type="text"><br><br>
-
-<label>Location:</label><br>
-<input type="text"><br><br>
 
 <button type="submit">Submit</button>
 
-
-
-<br>
-
-<a href="index.html">Go back to Home</a>
-
-</body>
-
-</html>
-<p>Registration is currently FREE for early tutors.</p>
-
-<p>Join now and start getting students.</p>
-<script>
-function saveTutor(event){
-event.preventDefault()
-
-let tutor={
-name:document.getElementById("name").value,
-subject:document.getElementById("subject").value,
-experience:document.getElementById("experience").value,
-location:document.getElementById("location").value
-}
-
-let tutors=JSON.parse(localStorage.getItem("tutors")) || []
-
-tutors.push(tutor)
-
-localStorage.setItem("tutors",JSON.stringify(tutors))
-
-alert("Tutor registered successfully!")
-
-}
-</script>
+</form>
