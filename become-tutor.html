@@ -47,3 +47,24 @@
 <p>Registration is currently FREE for early tutors.</p>
 
 <p>Join now and start getting students.</p>
+<script>
+function saveTutor(event){
+event.preventDefault()
+
+let tutor={
+name:document.getElementById("name").value,
+subject:document.getElementById("subject").value,
+experience:document.getElementById("experience").value,
+location:document.getElementById("location").value
+}
+
+let tutors=JSON.parse(localStorage.getItem("tutors")) || []
+
+tutors.push(tutor)
+
+localStorage.setItem("tutors",JSON.stringify(tutors))
+
+alert("Tutor registered successfully!")
+
+}
+</script>
