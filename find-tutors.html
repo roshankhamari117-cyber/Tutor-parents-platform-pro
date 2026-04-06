@@ -6,7 +6,33 @@
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body<h2>Available Tutors</h2>
+
+<div id="tutorList"></div>
+
+<script>
+
+let tutors = JSON.parse(localStorage.getItem("tutors")) || [];
+
+let tutorList = document.getElementById("tutorList");
+
+tutors.forEach(function(tutor){
+
+let card = document.createElement("div");
+
+card.innerHTML = `
+<h3>${tutor.name}</h3>
+<p>Subject: ${tutor.subject}</p>
+<p>Experience: ${tutor.experience}</p>
+<p>Location: ${tutor.location}</p>
+<hr>
+`;
+
+tutorList.appendChild(card);
+
+});
+
+</script>>
 <div class="navbar">
 <a href="index.html">Home</a>
 <a href="find-tutors.html">Find Tutors</a>
