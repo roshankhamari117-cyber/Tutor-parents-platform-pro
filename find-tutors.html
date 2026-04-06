@@ -7,16 +7,22 @@
 </head>
 
 <body>
+
 <div class="navbar">
 <a href="index.html">Home</a>
 <a href="find-tutors.html">Find Tutors</a>
 <a href="become-tutor.html">Become Tutor</a>
 <a href="contact.html">Contact</a>
 </div>
+
 <h1>Find Tutors</h1>
+
 <input type="text" id="search" placeholder="Search subject (Math, English...)">
 <button onclick="searchTutor()">Search</button>
-<d<div id="tutorList"></div>
+
+<br><br>
+
+<div id="tutorList"></div>
 
 <script>
 
@@ -42,33 +48,28 @@ tutorList.appendChild(card);
 
 });
 
+
+function searchTutor(){
+
+let input = document.getElementById("search").value.toLowerCase();
+
+let tutors = document.querySelectorAll(".tutor");
+
+tutors.forEach(function(tutor){
+
+let text = tutor.innerText.toLowerCase();
+
+if(text.includes(input)){
+tutor.style.display = "block";
+}else{
+tutor.style.display = "none";
+}
+
+});
+
+}
+
 </script>
-
-<br>
-
-<div class="tutor">
-
-<h2>Anita Das</h2>
-<p>Subject: English</p>
-<p>Experience: 3 years</p>
-<p>Location: Balangir</p>
-
-<button>Contact Tutor</button>
-
-</div>
-
-<br>
-
-<div class="tutor">
-
-<h2>Raj Patel</h2>
-<p>Subject: Science</p>
-<p>Experience: 4 years</p>
-<p>Location: Balangir</p>
-
-<button>Contact Tutor</button>
-
-</div>
 
 <br>
 
@@ -77,19 +78,3 @@ tutorList.appendChild(card);
 </body>
 
 </html>
-<script>
-function searchTutor() {
-  let input = document.getElementById("search").value.toLowerCase();
-  let tutors = document.querySelectorAll(".tutor");
-
-  tutors.forEach(function(tutor) {
-    let text = tutor.innerText.toLowerCase();
-
-    if(text.includes(input)){
-      tutor.style.display = "block";
-    } else {
-      tutor.style.display = "none";
-    }
-  });
-}
-</script>
