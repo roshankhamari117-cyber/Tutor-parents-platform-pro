@@ -28,5 +28,29 @@
 
 </form>
 
-</body>
+<script>
+function saveTutor(event) {
+event.preventDefault();
+
+let name = document.getElementById("name").value;
+let subject = document.getElementById("subject").value;
+let experience = document.getElementById("experience").value;
+let location = document.getElementById("location").value;
+
+let tutor = {
+name: name,
+subject: subject,
+experience: experience,
+location: location
+};
+
+let tutors = JSON.parse(localStorage.getItem("tutors")) || [];
+tutors.push(tutor);
+
+localStorage.setItem("tutors", JSON.stringify(tutors));
+
+alert("Tutor profile added!");
+
+}
+</script></body>
 </html>
