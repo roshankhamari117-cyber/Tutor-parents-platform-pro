@@ -50,7 +50,11 @@ card.className = "tutor"
 card.innerHTML = `
 <img src="${tutor.photo}" width="120" style="border-radius:10px"><br><br>
 
-<h2>${tutor.name}</h2>
+<h2 onclick="openTutor('${tutor.phone}')" style="cursor:pointer;color:blue;">
+${tutor.name}
+</h2><h2 onclick="openTutor('${tutor.phone}')" style="cursor:pointer; color:blue;">
+${tutor.name}
+</h2>
 
 <p>Subject: ${tutor.subject}</p>
 <p>Experience: ${tutor.experience}</p>
@@ -91,10 +95,3 @@ displayTutors(filtered)
 
 </script>
 
-<br><br>
-
-<a href="index.html">Go Back Home</a>
-
-</body>
-
-</html>
