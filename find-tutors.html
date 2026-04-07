@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>Find Tutors</title>
+<title>Tutor Profile</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -15,83 +15,52 @@
 <a href="contact.html">Contact</a>
 </div>
 
-<h1>Find Tutors</h1>
+<h1>Tutor Profile</h1>
 
-<input type="text" id="searchInput" placeholder="Search subject (Math, English...)">
-<button onclick="searchTutor()">Search</button>
-
-<br><br>
-
-<div id="tutorList"></div>
+<div id="profile"></div>
 
 <script>
 
 let tutors = JSON.parse(localStorage.getItem("tutors")) || []
 
-let tutorList = document.getElementById("tutorList")
+let selectedPhone = localStorage.getItem("selectedTutor")
 
-function displayTutors(list){
+let tutor = tutors.find(function(t){
+return t.phone === selectedPhone
+})
 
-tutorList.innerHTML = ""
+let profile = document.getElementById("profile")
 
-list.forEach(function(tutor){
+if(tutor){
 
-let card = document.createElement("div")
-card.className = "tutor"
+profile.innerHTML = `
+<div class="tutor">
 
-card.innerHTML = `
-<img src="${tutor.photo}" width="120" style="border-radius:10px"><br><br>
+<img src="${tutor.photo}" width="150" style="border-radius:10px"><br><br>
 
-<h2 onclick="openTutor('${tutor.phone}')" style="cursor:pointer;color:blue;">
-${tutor.name}
-</h2>
+<h2>${tutor.name}</h2>
 
-<p>Subject: ${tutor.subject}</p>
-<p>Experience: ${tutor.experience}</p>
-<p>Qualification: ${tutor.qualification}</p>
-<p>Class: ${tutor.class}</p>
-<p>Location: ${tutor.location}</p>
-<p>Phone: ${tutor.phone}</p>
+<p><b>Subject:</b> ${tutor.subject}</p>
+<p><b>Experience:</b> ${tutor.experience}</p>
+<p><b>Qualification:</b> ${tutor.qualification}</p>
+<p><b>Class:</b> ${tutor.class}</p>
+<p><b>Location:</b> ${tutor.location}</p>
+<p><b>Phone:</b> ${tutor.phone}</p>
 
 <a href="https://wa.me/${tutor.phone}" target="_blank">
 <button>Contact on WhatsApp</button>
 </a>
+
+</div>
 `
-
-tutorList.appendChild(card)
-
-})
-
-}
-
-displayTutors(tutors)
-
-function searchTutor(){
-
-let input = document.getElementById("searchInput").value.toLowerCase()
-
-let filtered = tutors.filter(function(tutor){
-
-return tutor.subject.toLowerCase().includes(input)
-
-})
-
-displayTutors(filtered)
-
-}
-
-function openTutor(phone){
-
-localStorage.setItem("selectedTutor", phone)
-
-window.location.href = "tutor-profile.html"
 
 }
 
 </script>
 
-<br>
-<a href="index.html">Go Back Home</a>
+<br><br>
+
+<a href="find-tutors.html">⬅ Back to Tutors</a>
 
 </body>
 
