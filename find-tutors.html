@@ -37,14 +37,20 @@ let card = document.createElement("div");
 card.className = "tutor";
 
 card.innerHTML = `
+<img src="${tutor.photo}" width="120" style="border-radius:10px"><br><br>
+
 <h2>${tutor.name}</h2>
 <p>Subject: ${tutor.subject}</p>
 <p>Experience: ${tutor.experience}</p>
+<p>Qualification: ${tutor.qualification}</p>
+<p>Class: ${tutor.class}</p>
 <p>Location: ${tutor.location}</p>
 <p>Phone: ${tutor.phone}</p>
+
 <a href="https://wa.me/${tutor.phone}" target="_blank">
 <button>Contact on WhatsApp</button>
 </a>
+`;
 `;
 
 tutorList.appendChild(card);
