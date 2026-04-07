@@ -79,6 +79,25 @@ displayTutors(tutors)
 
 function searchTutor(){
 
+let subject = document.getElementById("subjectSearch").value.toLowerCase();
+let location = document.getElementById("locationSearch").value.toLowerCase();
+
+let tutorCards = document.querySelectorAll(".tutor");
+
+tutorCards.forEach(function(card){
+
+let text = card.innerText.toLowerCase();
+
+if(text.includes(subject) && text.includes(location)){
+card.style.display = "block";
+}else{
+card.style.display = "none";
+}
+
+});
+
+}
+
 let input = document.getElementById("searchInput").value.toLowerCase()
 
 let filtered = tutors.filter(function(tutor){
