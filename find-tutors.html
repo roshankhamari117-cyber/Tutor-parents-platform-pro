@@ -16,12 +16,16 @@
 </div>
 
 <h1>Find Tutors</h1>
-<input type="text" id="subjectSearch" placeholder="Search by subject..." onkeyup="searchTutor()">
+
+<input type="text" id="subjectSearch" placeholder="Search by subject (Math, English...)">
 
 <br><br>
 
-<input type="text" id="locationSearch" placeholder="Search by location..." onkeyup="searchTutor()">
+<input type="text" id="locationSearch" placeholder="Search by location (Balangir...)">
 
+<br><br>
+
+<button onclick="searchTutor()">Search</button>
 
 <br><br>
 
@@ -44,29 +48,20 @@ let card = document.createElement("div")
 card.className = "tutor"
 
 card.innerHTML = `
-
 <img src="${tutor.photo}" width="120" style="border-radius:10px"><br><br>
 
 <h2>${tutor.name}</h2>
 
 <p>Subject: ${tutor.subject}</p>
-
 <p>Experience: ${tutor.experience}</p>
-
 <p>Qualification: ${tutor.qualification}</p>
-
 <p>Class: ${tutor.class}</p>
-
 <p>Location: ${tutor.location}</p>
-
 <p>Phone: ${tutor.phone}</p>
 
 <a href="https://wa.me/${tutor.phone}" target="_blank">
-
 <button>Contact on WhatsApp</button>
-
 </a>
-
 `
 
 tutorList.appendChild(card)
@@ -79,30 +74,14 @@ displayTutors(tutors)
 
 function searchTutor(){
 
-let subject = document.getElementById("subjectSearch").value.toLowerCase();
-let location = document.getElementById("locationSearch").value.toLowerCase();
+let subject = document.getElementById("subjectSearch").value.toLowerCase()
 
-let tutorCards = document.querySelectorAll(".tutor");
-
-tutorCards.forEach(function(card){
-
-let text = card.innerText.toLowerCase();
-
-if(text.includes(subject) && text.includes(location)){
-card.style.display = "block";
-}else{
-card.style.display = "none";
-}
-
-});
-
-}
-
-let input = document.getElementById("searchInput").value.toLowerCase()
+let location = document.getElementById("locationSearch").value.toLowerCase()
 
 let filtered = tutors.filter(function(tutor){
 
-return tutor.subject.toLowerCase().includes(input)
+return tutor.subject.toLowerCase().includes(subject) &&
+       tutor.location.toLowerCase().includes(location)
 
 })
 
@@ -112,7 +91,7 @@ displayTutors(filtered)
 
 </script>
 
-<br>
+<br><br>
 
 <a href="index.html">Go Back Home</a>
 
