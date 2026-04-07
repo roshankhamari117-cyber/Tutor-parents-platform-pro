@@ -17,67 +17,73 @@
 
 <h1>Find Tutors</h1>
 
-<input type="text" id="search" placeholder="Search subject (Math, English...)">
-<button onclick="searchTutor()">Search</button>
+<input type="text" id="searchInput" placeholder="Search by subject..." onkeyup="searchTutor()">
 
-<br><br>
-<input type="text" id="searchInput" placeholder="Search by subject..." onkeyup="searchTutors()">
 <br><br>
 
 <div id="tutorList"></div>
 
-
 <script>
 
-let tutors = JSON.parse(localStorage.getItem("tutors")) || [];
+let tutors = JSON.parse(localStorage.getItem("tutors")) || []
 
-let tutorList = document.getElementById("tutorList");
+let tutorList = document.getElementById("tutorList")
 
-tutors.forEach(function(tutor){
+function displayTutors(list){
 
-let card = document.createElement("div");
+tutorList.innerHTML = ""
 
-card.className = "tutor";
+list.forEach(function(tutor){
+
+let card = document.createElement("div")
+
+card.className = "tutor"
 
 card.innerHTML = `
+
 <img src="${tutor.photo}" width="120" style="border-radius:10px"><br><br>
 
 <h2>${tutor.name}</h2>
+
 <p>Subject: ${tutor.subject}</p>
+
 <p>Experience: ${tutor.experience}</p>
+
 <p>Qualification: ${tutor.qualification}</p>
+
 <p>Class: ${tutor.class}</p>
+
 <p>Location: ${tutor.location}</p>
+
 <p>Phone: ${tutor.phone}</p>
 
 <a href="https://wa.me/${tutor.phone}" target="_blank">
+
 <button>Contact on WhatsApp</button>
+
 </a>
-`;
 
+`
 
-tutorList.appendChild(card);
+tutorList.appendChild(card)
 
-});
+})
 
+}
+
+displayTutors(tutors)
 
 function searchTutor(){
 
-let input = document.getElementById("search").value.toLowerCase();
+let input = document.getElementById("searchInput").value.toLowerCase()
 
-let tutors = document.querySelectorAll(".tutor");
+let filtered = tutors.filter(function(tutor){
 
-tutors.forEach(function(tutor){
+return tutor.subject.toLowerCase().includes(input)
 
-let text = tutor.innerText.toLowerCase();
+})
 
-if(text.includes(input)){
-tutor.style.display = "block";
-}else{
-tutor.style.display = "none";
-}
-
-});
+displayTutors(filtered)
 
 }
 
