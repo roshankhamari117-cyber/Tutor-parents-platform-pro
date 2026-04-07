@@ -17,14 +17,7 @@
 
 <h1>Find Tutors</h1>
 
-<input type="text" id="subjectSearch" placeholder="Search by subject (Math, English...)">
-
-<br><br>
-
-<input type="text" id="locationSearch" placeholder="Search by location (Balangir...)">
-
-<br><br>
-
+<input type="text" id="searchInput" placeholder="Search subject (Math, English...)">
 <button onclick="searchTutor()">Search</button>
 
 <br><br>
@@ -44,15 +37,12 @@ tutorList.innerHTML = ""
 list.forEach(function(tutor){
 
 let card = document.createElement("div")
-
 card.className = "tutor"
 
 card.innerHTML = `
 <img src="${tutor.photo}" width="120" style="border-radius:10px"><br><br>
 
 <h2 onclick="openTutor('${tutor.phone}')" style="cursor:pointer;color:blue;">
-${tutor.name}
-</h2><h2 onclick="openTutor('${tutor.phone}')" style="cursor:pointer; color:blue;">
 ${tutor.name}
 </h2>
 
@@ -78,14 +68,11 @@ displayTutors(tutors)
 
 function searchTutor(){
 
-let subject = document.getElementById("subjectSearch").value.toLowerCase()
-
-let location = document.getElementById("locationSearch").value.toLowerCase()
+let input = document.getElementById("searchInput").value.toLowerCase()
 
 let filtered = tutors.filter(function(tutor){
 
-return tutor.subject.toLowerCase().includes(subject) &&
-       tutor.location.toLowerCase().includes(location)
+return tutor.subject.toLowerCase().includes(input)
 
 })
 
@@ -93,5 +80,19 @@ displayTutors(filtered)
 
 }
 
+function openTutor(phone){
+
+localStorage.setItem("selectedTutor", phone)
+
+window.location.href = "tutor-profile.html"
+
+}
+
 </script>
 
+<br>
+<a href="index.html">Go Back Home</a>
+
+</body>
+
+</html>
